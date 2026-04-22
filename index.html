@@ -1,1 +1,46 @@
-<div id="score">Score: 0</div>
+let board = [...Array(4)].map(() => Array(4).fill(0));
+let score = 0;
+
+function startGame() {
+    board = [...Array(4)].map(() => Array(4).fill(0));
+    score = 0;
+    generateTile();
+    generateTile();
+    updateBoard();
+}
+
+function generateTile() {
+    let emptyCells = [];
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (board[i][j] === 0) emptyCells.push({x: i, y: j});
+        }
+    }
+    if (emptyCells.length > 0) {
+        const {x, y} = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        board[x][y] = Math.random() < 0.9 ? 2 : 4;
+    }
+}
+
+// (你的 move 與 merge 函式保持不變，請保留在下面...)
+
+function updateBoard() {
+    const boardElement = document.getElementById('game-board');
+    boardElement.innerHTML = ''; // 清空原本的格子
+    document.getElementById('score').innerText = 'Score: ' + score;
+
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            const tile = document.createElement('div');
+            tile.classList.add('tile');
+            if (board[i][j] !== 0) {
+                tile.innerText = board[i][j];
+                tile.classList.add('tile-' + board[i][j]); // 用來設顏色
+            }
+            boardElement.appendChild(tile);
+        }
+    }
+}
+
+// 修正：刪除原本檔案最後那個多餘的 }
+startGame();
