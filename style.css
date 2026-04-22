@@ -1,0 +1,12 @@
+body { text-align: center; font-family: sans-serif; background: #fff0f5; }
+#game-board { 
+    display: grid; grid-template-columns: repeat(4, 80px); gap: 10px; 
+    justify-content: center; background: #d8bfd8; padding: 10px; border-radius: 10px; 
+}
+.tile { width: 80px; height: 80px; background: #eee; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+/* 世代顏色 */
+.gen-1 { background: #ffcccb; }
+.gen-2 { background: #ffd700; }
+.gen-3 { background: #dda0dd; }
+.gen-4 { background: #87ceeb; }
+.gen-5 { background: #98fb98; }
